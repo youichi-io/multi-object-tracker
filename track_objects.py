@@ -5,6 +5,8 @@ import cv2
 import keyboard
 
 from draw import MultiBoxDrawer
+from utils import is_end
+
 
 def main(filename):
     # 動画ファイルsetting
@@ -51,11 +53,13 @@ def main(filename):
                     # multiTrackerへの追加は bbox = [x0, y0, width(x1-x0), hight(y1-y0)]
                     multiTracker.add(cv2.legacy.TrackerKCF_create(), frame, bbox)
                     colors.append((randint(0, 255), randint(0, 255), randint(0, 255)))
-                    
-            # 画像表示のため遅延を入れておく
-            cv2.waitKey(25)
+            
+            # # 画像表示のため遅延を入れておく
+            cv2.waitKey(30)
             # qキーが押されたときbreak
             if keyboard.is_pressed("q"):
+                break
+            if is_end():
                 break
         else:
             break
