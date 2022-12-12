@@ -24,7 +24,7 @@ class MultiBoxDrawer:
                 time.sleep(0.3)
                 break
 
-        cv2.destroyAllWindows()
+        cv2.destroyWindow('img')
         # 複数のバウンディングボックスの座標情報をreturn
         return m.ROIRegion
 
