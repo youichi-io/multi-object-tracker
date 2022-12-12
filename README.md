@@ -18,6 +18,10 @@ pip install -r requirements.txt
 python track_objects.py
 ```
 
+## Use
+t key: open another window. let's draw boxes!
+space key: close another window.
+
 ## Demo
 ![demo](sample/Animation.gif)
 
