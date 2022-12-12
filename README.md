@@ -19,7 +19,7 @@ python track_objects.py
 ```
 
 ## Use
-t key: open another window. let's draw boxes!
+t key: open another window. let's draw boxes!  
 space key: close another window.
 
 ## Demo
