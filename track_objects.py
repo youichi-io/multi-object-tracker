@@ -5,7 +5,15 @@ import cv2
 import keyboard
 
 from draw import MultiBoxDrawer
-from utils import is_end
+
+
+def is_end(window_names=["Video"]):
+    return_value = False
+    # イメージウインドウの x ボタンを押すか、ESC キー入力で終了処理
+    window_property = [cv2.getWindowProperty(window_name, cv2.WINDOW_AUTOSIZE) for window_name in window_names]
+    if max(window_property) > 0 or (cv2.waitKey(1) & 0xff == 27):
+        return_value = True
+    return return_value
 
 
 def main(filename):
@@ -49,7 +57,7 @@ def main(filename):
                 multiTracker = cv2.legacy.MultiTracker_create()
                 for bbox in bboxes:
                     # bbox = [x0, y0, x1, y1]
-                    bbox = [bbox[0], bbox[1], bbox[2]-bbox[0], bbox[3]-bbox[1]]
+                    bbox = [bbox[0], bbox[1], bbox[2], bbox[3]]
                     # multiTrackerへの追加は bbox = [x0, y0, width(x1-x0), hight(y1-y0)]
                     multiTracker.add(cv2.legacy.TrackerKCF_create(), frame, bbox)
                     colors.append((randint(0, 255), randint(0, 255), randint(0, 255)))
